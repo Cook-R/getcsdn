@@ -1,4 +1,4 @@
-package com.getcsdn;
+package com.getcsdn.Services;
 
 
 import org.springframework.stereotype.Service;
@@ -17,8 +17,8 @@ public class getCsdnTitleAndUrl {
     public  List<String[]>  getcsdn(String PRE_URL,String SUF_URL ,String blogName) throws IOException, InterruptedException {
         List<String[]> allData = new ArrayList<>();
         for (int i = 1; ; i++) {
-            Thread.currentThread().sleep(2000);
-            System.out.println("正在爬取第" +i + "页的博客连接，请稍等！！！");
+            Thread.currentThread().sleep(800);
+            System.out.println(blogName+"您好："+"我正在爬取第" +i + "页的博客连接，请稍等！！！");
             String url = PRE_URL + blogName + SUF_URL + i;
             Scanner scanner = new Scanner(new URL(url).openStream());
             StringBuffer sb = new StringBuffer();
@@ -40,10 +40,8 @@ public class getCsdnTitleAndUrl {
             scanner.close();
         }
 //        获取了博客的连接和标题
-        System.out.println("一共获取到："+allData.size()+ "篇博客");
-//        allData.forEach(e -> System.out.println(e[0] + "," + e[1]));
-
+        System.out.println(blogName+"您好："+"我一共获取到："+allData.size()+ "篇博客");
         return allData;
-//        allData.forEach(e -> getArticleFromUrl(e[0]));
+
     }
 }
